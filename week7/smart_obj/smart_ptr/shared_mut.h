@@ -23,7 +23,7 @@ class shared_mut : public smart_obj {
 		shared_mut operator*(const shared_mut &shared);
 		shared_mut operator/(const shared_mut &shared);
 		Object* operator->();
-		shared_mut operator=(const shared_mut &r);
+		shared_mut&operator=(const shared_mut &r);
 };
 }
 

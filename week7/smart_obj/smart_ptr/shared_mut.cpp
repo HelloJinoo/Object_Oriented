@@ -12,7 +12,7 @@ namespace ptr{
 	};
 
 	void shared_mut::release(){
-		int c = _mgr->count-1;
+		int c = (_mgr->count)-1;
 		if(c == 0 ){
 			delete(_mgr);
 			_mgr = nullptr;
@@ -73,14 +73,14 @@ namespace ptr{
 	};
 
 	Object* shared_mut::operator->(){
-		return this->_mgr->ptr;
+		return _mgr->ptr;
 	};
 
 	
-	shared_mut shared_mut::operator=(const shared_mut &r) {
+	shared_mut&shared_mut::operator=(const shared_mut &r) {
 		release();
 		mgr* new_mgr = new mgr(r._mgr->ptr->get());
-		this->_mgr = new_mgr;
+		_mgr = new_mgr;
 		increase();
 		return *this;
 	};

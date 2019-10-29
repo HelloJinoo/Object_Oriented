@@ -22,7 +22,7 @@ public :
 	unique_immut operator/(unique_immut &unique);
 	Object* operator->();
 
-	unique_immut operator=(unique_immut& r);
+	unique_immut&operator=(unique_immut& r);
 };
 }
 

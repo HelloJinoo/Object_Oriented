@@ -39,7 +39,7 @@ Object* unique_immut::get() const{
 	
 unique_immut unique_immut::operator+(unique_immut &unique){
 	   int val = this->_mgr->ptr->get() + unique._mgr->ptr->get(); 
-	   this->release();
+	   release();
 	   unique.release();
            mgr* new_mgr = new mgr(val);
            unique_immut new_u = unique_immut();
@@ -84,10 +84,12 @@ Object* unique_immut::operator->(){
 };
 
 
-unique_immut unique_immut::operator=(unique_immut& r){
-	if(this->_mgr != r._mgr){
+unique_immut&unique_immut::operator=(unique_immut& r){
+	//if(_mgr != r._mgr){
+	if(this != &r){
 		release();
-		this->_mgr = r._mgr;
+		_mgr = r._mgr;
+		//r._mgr = _mgr; 
 	}
 	return *this;
 	
